@@ -15,6 +15,9 @@ public class Main {
 
     private static final String RETRY = "Invalid argument.";
 
+    private static final String HELP_DECK = "\nRed - +1 discard every round\nBlue - +1 hand every round\nYellow - Start with an extra $10\nGreen - At end of each round, earn $2 per remaining hand and $1 per remaining discard; Earn no interest\n";
+    private static final String HELP_STAKE = "\nWhite - Base difficulty\nRed - Small Blind gives no reward money\nGreen - Required score scales faster for each Ante\nBlue - -1 Discard\n";
+
     /** 
      * Start a game of Balatro.
      * @param args Leave empty.
@@ -44,8 +47,7 @@ public class Main {
 
             //check for 'help'
             if (d.equals("help")) {
-                // TODO list deck types
-                System.out.println("HELP DECK TEXT");
+                System.out.println(HELP_DECK);
                 continue;
             }
 
@@ -76,8 +78,7 @@ public class Main {
 
             //check for 'help'
             if (d.equals("help")) {
-                // TODO list stake types
-                System.out.println("HELP STAKE TEXT");
+                System.out.println(HELP_STAKE);
                 continue;
             }
 
@@ -111,7 +112,6 @@ public class Main {
                 long seed;
                 System.out.println(SEED_PROMPT);
 
-                // TODO handle this inputting of a long more gracefully
                 try {
                     seed = scan.nextLong();
                 } catch (Exception e) {
