@@ -6,6 +6,35 @@ import java.util.Random;
 import src.main.java.Types.Stake;
 import src.main.java.Types.Deck;
 
+/* TODO: 
+Display:
+    - blind size : small / big / boss
+    - score at least "" points to earn "" money
+    - display current round score
+    - display current hands and discards
+    - display current money
+    - display current ante and round
+    - Jokers
+    - Planets/Tarot
+    - Cards/Deck
+
+    - Scoring:
+    - print hand type and level & default chips/mult
+    - print scoring of each card individually
+    - print when jokers trigger
+
+    End of round:
+    - print any joker effects
+    - trigger money calculations
+
+
+    DECKS TO IMPLEMENT:
+    red - +1 discard
+    blue - +1 hand
+    yellow - +10 money
+    green - change interest calculations
+*/
+
 public class Main {
 
     private static final String DECK_PROMPT = "What deck type would you like to use? Type 'help' for a list of decks.";
@@ -29,9 +58,9 @@ public class Main {
         Stake stakeType = getStake(scan);
         Random rand = getSeed(scan);
 
-        //GameState game = getGame(deckType, stakeType, rand);
+        GameState game = getGame(deckType, stakeType, rand);
 
-        //game.start();
+        game.display();
     }
 
     /**
@@ -130,6 +159,28 @@ public class Main {
             } else {
                 System.out.println(RETRY);
             }
+        }
+    }
+
+    /**
+     * Create a new game based on the provided deck, stake, and seed.
+     * @param deckType type of requested deck.
+     * @param stakeType type of requested stake.
+     * @param rand random number generator for our game.
+     * @return A GameState of the requested type.
+     */
+    private static GameState getGame(Deck deckType, Stake stakeType, Random rand) {
+        switch(deckType) {
+            case Deck.RED:
+                return new RedDeck(stakeType, rand);
+            case Deck.BLUE:
+                return new BlueDeck(stakeType, rand);
+            case Deck.YELLOW:
+                return new YellowDeck(stakeType, rand);
+            case Deck.GREEN:
+                return new GreenDeck(stakeType, rand);
+            default:
+                throw new IllegalArgumentException("Invalid Deck Type found when creating new game.");
         }
     }
 }
