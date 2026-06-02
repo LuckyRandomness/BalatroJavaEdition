@@ -26,13 +26,6 @@ Display:
     End of round:
     - print any joker effects
     - trigger money calculations
-
-
-    DECKS TO IMPLEMENT:
-    red - +1 discard
-    blue - +1 hand
-    yellow - +10 money
-    green - change interest calculations
 */
 
 public class Main {
@@ -180,7 +173,7 @@ public class Main {
             case Deck.GREEN:
                 return new GreenDeck(stakeType, rand);
             default:
-                throw new IllegalArgumentException("Invalid Deck Type found when creating new game.");
+                throw new IllegalArgumentException("Invalid/Unimplemented Deck Type found when creating new game.");
         }
     }
 }

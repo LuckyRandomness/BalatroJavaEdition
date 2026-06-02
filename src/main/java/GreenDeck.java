@@ -10,12 +10,6 @@ public class GreenDeck extends GameState {
     }
 
     @Override
-    void display() {
-        super.display();
-        System.out.println("GREEN");
-    }
-
-    @Override
     void calculateMoney() {
         System.out.println("Green deck money calculations");
     }

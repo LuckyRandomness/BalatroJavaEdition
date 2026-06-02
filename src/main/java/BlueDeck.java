@@ -9,10 +9,4 @@ public class BlueDeck extends GameState {
         super(stakeType, rand);
         increaseDefaultHands(1);
     }
-
-    @Override
-    void display() {
-        super.display();
-        System.out.println("BLUE");
-    }
 }

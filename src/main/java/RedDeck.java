@@ -9,10 +9,4 @@ public class RedDeck extends GameState {
         super(stakeType, rand);
         increaseDefaultDiscards(1);
     }
-
-    @Override
-    void display() {
-        super.display();
-        System.out.println("RED");
-    }
 }

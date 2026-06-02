@@ -2,7 +2,13 @@ package src.main.java;
 
 import java.util.Random;
 
+import src.main.java.Types.Blind;
+import src.main.java.Types.Edition;
+import src.main.java.Types.Modifier;
+import src.main.java.Types.Seal;
 import src.main.java.Types.Stake;
+import src.main.java.Types.Suit;
+import src.main.java.Types.Value;
 
 abstract class GameState {
 
@@ -21,11 +27,10 @@ abstract class GameState {
     }
 
     void display() {
-        System.out.println("Stake: " + this.stake);
-        System.out.println("Num of discards: " + default_discards);
-        System.out.println("Num of hands: " + default_hands);
-        System.out.println("Money: " + money);
-        calculateMoney();
+        Card card = new Card(Suit.HEART, Value.TEN, Modifier.BASE, Edition.POLYCHROME, Seal.RED);
+        float[] initial = {5, 2, 2};
+        card.scoreCard(initial, rand, Blind.TOOTH);
+        
     }
 
     void calculateMoney() {

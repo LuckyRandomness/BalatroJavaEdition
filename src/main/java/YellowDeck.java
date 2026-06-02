@@ -9,10 +9,4 @@ public class YellowDeck extends GameState {
         super(stakeType, rand);
         increaseMoney(10);
     }
-
-    @Override
-    void display() {
-        super.display();
-        System.out.println("YELLOW");
-    }
 }
