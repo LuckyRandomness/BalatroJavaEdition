@@ -53,7 +53,7 @@ public class Main {
 
         GameState game = getGame(deckType, stakeType, rand);
 
-        game.display();
+        game.begin();
     }
 
     /**

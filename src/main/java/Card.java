@@ -75,6 +75,92 @@ public class Card {
         }
     }
 
+    public String getSymbol() {
+        switch (this.value) {
+            case Value.ACE:
+                return "A";
+            case Value.TWO:
+                return "2";
+            case Value.THREE:
+                return "3";
+            case Value.FOUR:
+                return "4";
+            case Value.FIVE:
+                return "5";
+            case Value.SIX:
+                return "6";
+            case Value.SEVEN:
+                return "7";
+            case Value.EIGHT:
+                return "8";
+            case Value.NINE:
+                return "9";
+            case Value.TEN:
+                return "10";
+            case Value.JACK:
+                return "J";
+            case Value.QUEEN:
+                return "Q";
+            case Value.KING:
+                return "K";
+            default:
+                return "X";
+        }
+    }
+
+    public void displayLine(int line) {
+        switch (line) {
+            case 0:
+                System.out.print(" _____ ");
+                break;
+            case 1:
+                System.out.print("|");
+                System.out.print(getSymbol());
+                if (this.value == Value.TEN) {
+                    System.out.print("   |");
+                } else {
+                    System.out.print("    |");
+                }
+                break;
+            case 2:
+                System.out.print("|     |");
+                break;
+            case 3:
+                System.out.print("|  ");
+                System.out.print(getSuitSymbol());
+                System.out.print("  |");
+                break;
+            case 4:
+                System.out.print("|     |");
+                break;
+            case 5:
+                if (this.value == Value.TEN) {
+                    System.out.print("|___");
+                } else {
+                    System.out.print("|____");
+                }
+                System.out.print(getSymbol());
+                System.out.print("|");
+                break;
+        }
+    }
+
+    private String getSuitSymbol() {
+        switch (this.suit) {
+            case Suit.HEART:
+                //red text color code added, then white added back
+                return "\u001B[31m" + "H" + "\u001B[37m";
+            case Suit.CLUB:
+                return "C";
+            case Suit.DIAMOND:
+                return "\u001B[31m" + "D" + "\u001B[37m";
+            case Suit.SPADE:
+                return "S";
+            default:
+                return "X";
+        }
+    }
+
     public float[] scoreCard(float[] initial, Random rand, Blind blind) {
         displayStats(initial);
         if (!isDebuffed(blind)) {
